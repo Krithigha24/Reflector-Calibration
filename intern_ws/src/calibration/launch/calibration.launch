@@ -1,0 +1,10 @@
+<launch>
+    <!-- Start Node 1 -->
+    <node pkg="calibration" type="binseg.py" name="binseg" output="screen"/>
+    
+    <!-- Start Node 2 -->
+    <node pkg="calibration" type="scanAvg_node" name="averager" output="screen"/>
+
+    <!-- Launch RViz with saved configuration -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find calibration)/rviz/task.rviz"/>
+</launch>
