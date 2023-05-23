@@ -49,7 +49,7 @@ def scanCallback(scan_msg):
     filtered_scan_pub.publish(scan_msg)
 
 def main():
-    rospy.init_node("filter_node")
+    rospy.init_node("binseg")
    
     # Create a publisher for the filtered LaserScan message
     global filtered_scan_pub

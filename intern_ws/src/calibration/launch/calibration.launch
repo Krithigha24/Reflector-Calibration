@@ -5,6 +5,9 @@
     <!-- Start Node 2 -->
     <node pkg="calibration" type="scanAvg_node" name="averager" output="screen"/>
 
+    <!-- Start Node 2 -->
+    <node pkg="calibration" type="cluster.py" name="cluster" output="screen"/>
+
     <!-- Launch RViz with saved configuration -->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find calibration)/rviz/task.rviz"/>
 </launch>

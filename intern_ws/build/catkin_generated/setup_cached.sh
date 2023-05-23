@@ -7,7 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/krithigha/Reflector-Calibration/intern_ws/devel:$CMAKE_PREFIX_PATH"
 export PWD='/home/krithigha/Reflector-Calibration/intern_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/krithigha/Reflector-Calibration/intern_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/krithigha/Reflector-Calibration/intern_ws/src:$ROS_PACKAGE_PATH"
