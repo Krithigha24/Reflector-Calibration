@@ -11,6 +11,7 @@ const double TIMEOUT_DURATION = 30.0;  // Adjust as needed
 
 ros::Timer timeout_timer;
 
+// Resets the average scan parameters
 void resetAverageScan()
 {
   average_ranges.clear();
@@ -19,6 +20,7 @@ void resetAverageScan()
   timeout_timer.stop();  // Stop the timer
 }
 
+// Callback function for incoming LaserScan messages
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan_msg)
 {
   sensor_msgs::LaserScan average_scan = *scan_msg;
@@ -31,7 +33,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan_msg)
   {
     average_ranges = ranges;
     average_intensities = intensities;
-    timeout_timer.start(); 
+    timeout_timer.start();  // Start the timeout timer
   }
   else
   {

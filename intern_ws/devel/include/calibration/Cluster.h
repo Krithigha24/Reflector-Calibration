@@ -24,34 +24,19 @@ struct Cluster_
   typedef Cluster_<ContainerAllocator> Type;
 
   Cluster_()
-    : angle_min(0.0)
-    , angle_increment(0.0)
-    , x()
-    , y()
+    : index()
     , label()  {
     }
   Cluster_(const ContainerAllocator& _alloc)
-    : angle_min(0.0)
-    , angle_increment(0.0)
-    , x(_alloc)
-    , y(_alloc)
+    : index(_alloc)
     , label(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef float _angle_min_type;
-  _angle_min_type angle_min;
-
-   typedef float _angle_increment_type;
-  _angle_increment_type angle_increment;
-
-   typedef std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>> _x_type;
-  _x_type x;
-
-   typedef std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>> _y_type;
-  _y_type y;
+   typedef std::vector<int32_t, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<int32_t>> _index_type;
+  _index_type index;
 
    typedef std::vector<int32_t, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<int32_t>> _label_type;
   _label_type label;
@@ -85,10 +70,7 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::calibration::Cluster_<ContainerAllocator1> & lhs, const ::calibration::Cluster_<ContainerAllocator2> & rhs)
 {
-  return lhs.angle_min == rhs.angle_min &&
-    lhs.angle_increment == rhs.angle_increment &&
-    lhs.x == rhs.x &&
-    lhs.y == rhs.y &&
+  return lhs.index == rhs.index &&
     lhs.label == rhs.label;
 }
 
@@ -146,12 +128,12 @@ struct MD5Sum< ::calibration::Cluster_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4b2b1ab2620a329ffa16902476b2bdef";
+    return "9b0088670d95be7298b39001111310db";
   }
 
   static const char* value(const ::calibration::Cluster_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4b2b1ab2620a329fULL;
-  static const uint64_t static_value2 = 0xfa16902476b2bdefULL;
+  static const uint64_t static_value1 = 0x9b0088670d95be72ULL;
+  static const uint64_t static_value2 = 0x98b39001111310dbULL;
 };
 
 template<class ContainerAllocator>
@@ -170,10 +152,9 @@ struct Definition< ::calibration::Cluster_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 angle_min\n"
-"float32 angle_increment\n"
-"float32[] x\n"
-"float32[] y\n"
+    return "#float32 angle_min\n"
+"#float32 angle_increment\n"
+"int32[] index\n"
 "int32[] label\n"
 ;
   }
@@ -193,10 +174,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.angle_min);
-      stream.next(m.angle_increment);
-      stream.next(m.x);
-      stream.next(m.y);
+      stream.next(m.index);
       stream.next(m.label);
     }
 
@@ -216,21 +194,11 @@ struct Printer< ::calibration::Cluster_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::calibration::Cluster_<ContainerAllocator>& v)
   {
-    s << indent << "angle_min: ";
-    Printer<float>::stream(s, indent + "  ", v.angle_min);
-    s << indent << "angle_increment: ";
-    Printer<float>::stream(s, indent + "  ", v.angle_increment);
-    s << indent << "x[]" << std::endl;
-    for (size_t i = 0; i < v.x.size(); ++i)
+    s << indent << "index[]" << std::endl;
+    for (size_t i = 0; i < v.index.size(); ++i)
     {
-      s << indent << "  x[" << i << "]: ";
-      Printer<float>::stream(s, indent + "  ", v.x[i]);
-    }
-    s << indent << "y[]" << std::endl;
-    for (size_t i = 0; i < v.y.size(); ++i)
-    {
-      s << indent << "  y[" << i << "]: ";
-      Printer<float>::stream(s, indent + "  ", v.y[i]);
+      s << indent << "  index[" << i << "]: ";
+      Printer<int32_t>::stream(s, indent + "  ", v.index[i]);
     }
     s << indent << "label[]" << std::endl;
     for (size_t i = 0; i < v.label.size(); ++i)

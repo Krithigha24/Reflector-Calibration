@@ -8,16 +8,15 @@ import struct
 
 
 class Cluster(genpy.Message):
-  _md5sum = "4b2b1ab2620a329ffa16902476b2bdef"
+  _md5sum = "9b0088670d95be7298b39001111310db"
   _type = "calibration/Cluster"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32 angle_min
-float32 angle_increment
-float32[] x
-float32[] y
+  _full_text = """#float32 angle_min
+#float32 angle_increment
+int32[] index
 int32[] label"""
-  __slots__ = ['angle_min','angle_increment','x','y','label']
-  _slot_types = ['float32','float32','float32[]','float32[]','int32[]']
+  __slots__ = ['index','label']
+  _slot_types = ['int32[]','int32[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -27,7 +26,7 @@ int32[] label"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       angle_min,angle_increment,x,y,label
+       index,label
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -36,21 +35,12 @@ int32[] label"""
     if args or kwds:
       super(Cluster, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.angle_min is None:
-        self.angle_min = 0.
-      if self.angle_increment is None:
-        self.angle_increment = 0.
-      if self.x is None:
-        self.x = []
-      if self.y is None:
-        self.y = []
+      if self.index is None:
+        self.index = []
       if self.label is None:
         self.label = []
     else:
-      self.angle_min = 0.
-      self.angle_increment = 0.
-      self.x = []
-      self.y = []
+      self.index = []
       self.label = []
 
   def _get_types(self):
@@ -65,16 +55,10 @@ int32[] label"""
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_2f().pack(_x.angle_min, _x.angle_increment))
-      length = len(self.x)
+      length = len(self.index)
       buff.write(_struct_I.pack(length))
-      pattern = '<%sf'%length
-      buff.write(struct.Struct(pattern).pack(*self.x))
-      length = len(self.y)
-      buff.write(_struct_I.pack(length))
-      pattern = '<%sf'%length
-      buff.write(struct.Struct(pattern).pack(*self.y))
+      pattern = '<%si'%length
+      buff.write(struct.Struct(pattern).pack(*self.index))
       length = len(self.label)
       buff.write(_struct_I.pack(length))
       pattern = '<%si'%length
@@ -91,26 +75,14 @@ int32[] label"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
-      start = end
-      end += 8
-      (_x.angle_min, _x.angle_increment,) = _get_struct_2f().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%sf'%length
+      pattern = '<%si'%length
       start = end
       s = struct.Struct(pattern)
       end += s.size
-      self.x = s.unpack(str[start:end])
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%sf'%length
-      start = end
-      s = struct.Struct(pattern)
-      end += s.size
-      self.y = s.unpack(str[start:end])
+      self.index = s.unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -131,16 +103,10 @@ int32[] label"""
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_2f().pack(_x.angle_min, _x.angle_increment))
-      length = len(self.x)
+      length = len(self.index)
       buff.write(_struct_I.pack(length))
-      pattern = '<%sf'%length
-      buff.write(self.x.tostring())
-      length = len(self.y)
-      buff.write(_struct_I.pack(length))
-      pattern = '<%sf'%length
-      buff.write(self.y.tostring())
+      pattern = '<%si'%length
+      buff.write(self.index.tostring())
       length = len(self.label)
       buff.write(_struct_I.pack(length))
       pattern = '<%si'%length
@@ -158,26 +124,14 @@ int32[] label"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
-      start = end
-      end += 8
-      (_x.angle_min, _x.angle_increment,) = _get_struct_2f().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%sf'%length
+      pattern = '<%si'%length
       start = end
       s = struct.Struct(pattern)
       end += s.size
-      self.x = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%sf'%length
-      start = end
-      s = struct.Struct(pattern)
-      end += s.size
-      self.y = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
+      self.index = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -194,9 +148,3 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2f = None
-def _get_struct_2f():
-    global _struct_2f
-    if _struct_2f is None:
-        _struct_2f = struct.Struct("<2f")
-    return _struct_2f
