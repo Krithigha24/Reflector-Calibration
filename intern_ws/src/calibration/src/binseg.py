@@ -44,14 +44,14 @@ def scanCallback(scan_msg):
     filtered_scan_pub.publish(scan_msg)
 
 def main():
-    rospy.init_node("binseg")
+    rospy.init_node('binseg')
    
     # Create a publisher for the filtered LaserScan message
     global filtered_scan_pub
-    filtered_scan_pub = rospy.Publisher("/filtered_scan", LaserScan, queue_size=10)
+    filtered_scan_pub = rospy.Publisher('/filtered_scan', LaserScan, queue_size=10)
 
     # Subscribe to the LaserScan topic
-    sub = rospy.Subscriber("/scan", LaserScan, scanCallback, queue_size=10)
+    sub = rospy.Subscriber('/scan', LaserScan, scanCallback, queue_size=10)
 
     # Start the ROS node
     rospy.spin()

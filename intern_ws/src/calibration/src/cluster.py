@@ -4,25 +4,25 @@ import rospy
 from sensor_msgs.msg import LaserScan
 from sklearn.cluster import DBSCAN
 import numpy as np
-from calibration.msg import Cluster
+#from calibration.msg import Cluster
 
 THRESHOLD = 15  # Minimum points for a main cluster. Adjust as needed.
 
-def convert_laser_scan_to_points(msg, index_array): #x_array, y_array):
+def convert_laser_scan_to_points(scan_msg):
     """
-    Converts laser scan message to a list of (x, y) points and updates the x_array and y_array.
+    Converts laser scan message to a list of (x, y) points and respective angle of each point in angle_array.
     """
-    points = []
-    angle = msg.angle_min
+    points, angle_array = [], []
+    angle = scan_msg.angle_min
 
-    for index, r in enumerate(msg.ranges):
+    for r in scan_msg.ranges:
         if r != 0.0:
             x = r * np.cos(angle)
             y = r * np.sin(angle)
             points.append([x, y])
-            index_array.append(index)
-        angle += msg.angle_increment
-    return points
+            angle_array.append(angle)
+        angle += scan_msg.angle_increment
+    return points, angle_array
 
 def perform_dbscan_clustering(points):
     """
@@ -39,31 +39,65 @@ def perform_dbscan_clustering(points):
 
     return labels
 
-def process_laser_scan(msg):
+def find_label_indices(input_array):
+    indices = {}
+
+    label = None
+    start_index = None
+    end_index = None
+
+    for i in range(len(input_array)):
+        if input_array[i] != -1:
+            if label is None:
+                label = input_array[i]
+                start_index = i
+                end_index = i
+            elif input_array[i] == label:
+                end_index = i
+            else:
+                indices[label] = (start_index, end_index)
+                label = input_array[i]
+                start_index = i
+                end_index = i
+
+    if label is not None:
+        indices[label] = (start_index, end_index)
+
+    return indices
+
+def process_laser_scan(scan_msg):
     """
     Processes the laser scan message by converting it to points, performing DBSCAN clustering,
     and publishing the cluster information.
     """
-    index_array = []
-
-    points = convert_laser_scan_to_points(msg, index_array)#, x_array, y_array)
-    rospy.loginfo("Points array:")
-    rospy.loginfo(points)  # Print the points array using rospy.loginfo()
+    points, angle_array = convert_laser_scan_to_points(scan_msg)
     labels = perform_dbscan_clustering(points)
 
-    cluster_msg = Cluster()
+    #rospy.loginfo("Points array:")
+    #rospy.loginfo(points)  # Print the points array using rospy.loginfo()
+    rospy.loginfo("Labels array:")
+    rospy.loginfo(labels)  # Print the points array using rospy.loginfo()
+    #rospy.loginfo("Angle array:")
+    #rospy.loginfo(angle_array)  # Print the points array using rospy.loginfo()
+    indices = find_label_indices(labels)
+    # Print the results
+    for label, (start_index, end_index) in indices.items():
+        rospy.loginfo("Label {} start index = {}, end index = {}".format(label, start_index, end_index))
+
+
+    #cluster_msg = Cluster()
     #cluster_msg.angle_min = msg.angle_min
     #cluster_msg.angle_increment = msg.angle_increment
-    cluster_msg.index = index_array
-    cluster_msg.label = labels
+    #cluster_msg.index = index_array
+    #cluster_msg.label = labels
 
-    pub.publish(cluster_msg)
+    #pub.publish(cluster_msg)
 
 def main():
     rospy.init_node('cluster')
     rospy.Subscriber('/average_scan', LaserScan, process_laser_scan)
-    global pub
-    pub = rospy.Publisher('/cluster_points', Cluster, queue_size=10)
+    #global pub
+    #pub = rospy.Publisher('/cluster_points', Cluster, queue_size=10)
     rospy.spin()
 
 if __name__ == '__main__':
