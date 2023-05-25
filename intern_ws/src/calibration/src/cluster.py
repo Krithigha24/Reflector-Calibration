@@ -5,7 +5,6 @@ import math
 from sensor_msgs.msg import LaserScan
 from sklearn.cluster import DBSCAN
 import numpy as np
-#from calibration.msg import Cluster
 
 THRESHOLD = rospy.get_param('cluster_threshold')  # Minimum points for a main cluster. Adjust as needed.
 
@@ -41,8 +40,11 @@ def perform_dbscan_clustering(points):
     return labels
 
 def find_label_indices(input_array):
+    """
+    Finds the start and end indices for each cluster label in the input array.
+    Returns a dictionary mapping label to (start_index, end_index) tuple.
+    """
     indices = {}
-
     label = None
     start_index = None
     end_index = None
@@ -69,42 +71,33 @@ def find_label_indices(input_array):
 def process_laser_scan(scan_msg):
     """
     Processes the laser scan message by converting it to points, performing DBSCAN clustering,
-    and publishing the cluster information.
+    and printing the cluster information.
     """
     points, angle_array = convert_laser_scan_to_points(scan_msg)
     labels = perform_dbscan_clustering(points)
 
-    #rospy.loginfo("Points array:")
-    #rospy.loginfo(points)  # Print the points array using rospy.loginfo()
     rospy.loginfo("Labels array:")
-    rospy.loginfo(labels)  # Print the points array using rospy.loginfo()
-    #rospy.loginfo("Angle array:")
-    #rospy.loginfo(angle_array)  # Print the points array using rospy.loginfo()
+    rospy.loginfo(labels)  # Print the labels array using rospy.loginfo()
+
     indices = find_label_indices(labels)
     # Print the results
     for label, (start_index, end_index) in indices.items():
         rospy.loginfo("Label {} start index = {}, end index = {}".format(label, start_index, end_index))
+        # Angle of the reflector wrt to lidar
         average = sum(angle_array[start_index:end_index+1]) / len(angle_array[start_index:end_index+1])
         rospy.loginfo("Angle {}".format(average))
-        mp_x = (points[start_index][0] + points[end_index][0])/2 
-        mp_y = (points[start_index][1] + points[end_index][1])/2 
-        distance = math.sqrt(mp_x**2 + mp_y**2)
-        rospy.loginfo("distance {}".format(distance))
-
-    #cluster_msg = Cluster()
-    #cluster_msg.angle_min = msg.angle_min
-    #cluster_msg.angle_increment = msg.angle_increment
-    #cluster_msg.index = index_array
-    #cluster_msg.label = labels
-
-    #pub.publish(cluster_msg)
+        # Midpoint coordinates of the the reflector
+        mp_x = (points[start_index][0] + points[end_index][0])/2
+        mp_y = (points[start_index][1] + points[end_index][1])/2
+        # Euclidean distance from midpoint coordinate to lidar (0,0)
+        distance = math.sqrt(mp_x**2 + mp_y**2) 
+        rospy.loginfo("Distance {}".format(distance))
 
 def main():
     rospy.init_node('cluster')
     rospy.Subscriber('/average_scan', LaserScan, process_laser_scan)
-    #global pub
-    #pub = rospy.Publisher('/cluster_points', Cluster, queue_size=10)
     rospy.spin()
 
 if __name__ == '__main__':
     main()
+
