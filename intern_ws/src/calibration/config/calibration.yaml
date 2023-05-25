@@ -1,0 +1,8 @@
+#binseg
+reflectivity_threshold: 2000
+
+#averager
+timeout_duration: 30.0
+
+#cluster
+cluster_threshold: 15 # Minimum points for a main cluster density

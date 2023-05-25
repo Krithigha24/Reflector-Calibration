@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
 import rospy
+import math
 from sensor_msgs.msg import LaserScan
 from sklearn.cluster import DBSCAN
 import numpy as np
 #from calibration.msg import Cluster
 
-THRESHOLD = 15  # Minimum points for a main cluster. Adjust as needed.
+THRESHOLD = rospy.get_param('cluster_threshold')  # Minimum points for a main cluster. Adjust as needed.
 
 def convert_laser_scan_to_points(scan_msg):
     """
@@ -83,7 +84,12 @@ def process_laser_scan(scan_msg):
     # Print the results
     for label, (start_index, end_index) in indices.items():
         rospy.loginfo("Label {} start index = {}, end index = {}".format(label, start_index, end_index))
-
+        average = sum(angle_array[start_index:end_index+1]) / len(angle_array[start_index:end_index+1])
+        rospy.loginfo("Angle {}".format(average))
+        mp_x = (points[start_index][0] + points[end_index][0])/2 
+        mp_y = (points[start_index][1] + points[end_index][1])/2 
+        distance = math.sqrt(mp_x**2 + mp_y**2)
+        rospy.loginfo("distance {}".format(distance))
 
     #cluster_msg = Cluster()
     #cluster_msg.angle_min = msg.angle_min

@@ -4,7 +4,7 @@ import rospy
 from sensor_msgs.msg import LaserScan
 import numpy as np
 
-REFLECTIVITY_THRESHOLD = 2000
+REFLECTIVITY_THRESHOLD = rospy.get_param('reflectivity_threshold')
 
 """
 DETERMINING REFLECTIVITY THRESHOLD:
@@ -28,15 +28,22 @@ Larger value of k (e.g. k > 1) stricter
 #     outliers = [val for val in data if val > upper_bound]
 #     rospy.loginfo(min(outliers)) 
 #     return min(outliers)
-    
+
 def scanCallback(scan_msg):
+    #REFLECTIVITY_THRESHOLD = find_binseg_thresh(scan_msg.intensities)
+
+    # Convert ranges and intensities to numpy arrays
     ranges = np.array(scan_msg.ranges)
     intensities = np.array(scan_msg.intensities)
 
+    # Create a mask based on intensities above the threshold
     mask = intensities > REFLECTIVITY_THRESHOLD
+
+    # Filter ranges and intensities using the mask
     filtered_ranges = np.where(mask, ranges, 0.0)
     filtered_intensities = np.where(mask, intensities, 0.0)
 
+    # Update the LaserScan message with the filtered values
     scan_msg.ranges = filtered_ranges.tolist()
     scan_msg.intensities = filtered_intensities.tolist()
 
@@ -45,14 +52,14 @@ def scanCallback(scan_msg):
 
 def main():
     rospy.init_node('binseg')
-   
+
     # Create a publisher for the filtered LaserScan message
     global filtered_scan_pub
     filtered_scan_pub = rospy.Publisher('/filtered_scan', LaserScan, queue_size=10)
 
     # Subscribe to the LaserScan topic
     sub = rospy.Subscriber('/scan', LaserScan, scanCallback, queue_size=10)
-
+    
     # Start the ROS node
     rospy.spin()
 
