@@ -1,3 +1,6 @@
+//Don't average over time, estimate the center of the reflector within one scan
+//average over all the points instead? 
+
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
 
@@ -6,8 +9,8 @@ std::vector<float> average_ranges;
 std::vector<float> average_intensities;
 int num_messages = 0;
 
-// Timeout duration in seconds
-double TIMEOUT_DURATION ; 
+double TIMEOUT_DURATION ; // Timeout duration in seconds
+bool ENABLE_BINSEG ; 
 
 ros::Timer timeout_timer;
 
@@ -60,14 +63,27 @@ int main(int argc, char** argv)
 
     // Load the TIMEOUT_DURATION parameter from the parameter server
     if (!nh.getParam("timeout_duration", TIMEOUT_DURATION))
-    {
+    {   TIMEOUT_DURATION = 30.0;  // Default value
         ROS_WARN("Failed to load 'timeout_duration' parameter. Using default value: %.1f", TIMEOUT_DURATION);
-        TIMEOUT_DURATION = 30.0;  // Default value
     }
-    
-    average_scan_pub = nh.advertise<sensor_msgs::LaserScan>("/average_scan", 10);
-    ros::Subscriber scan_sub = nh.subscribe("/filtered_scan", 10, scanCallback);
 
+    // Load the binary segmentation enable parameter from the parameter server
+    if (!nh.getParam("enable_binaryseg", ENABLE_BINSEG))
+    {
+        ENABLE_BINSEG = false;  // Default value
+        ROS_WARN("Failed to load 'enable_binaryseg' parameter. Using default value: %d", ENABLE_BINSEG);
+        
+    }
+
+    // if (ENABLE_BINSEG){
+    //     ros::Subscriber scan_sub = nh.subscribe("/filtered_scan", 10, scanCallback);
+    // }else{
+    //     ros::Subscriber scan_sub = nh.subscribe("/scan", 10, scanCallback);
+    // }
+    //ros::Subscriber scan_sub = nh.subscribe("/filtered_scan", 10, scanCallback);
+    ros::Subscriber scan_sub = nh.subscribe("/scan", 10, scanCallback);
+    average_scan_pub = nh.advertise<sensor_msgs::LaserScan>("/average_scan", 10);
+    
     // Timer for checking the message timeout
     timeout_timer = nh.createTimer(ros::Duration(TIMEOUT_DURATION), [](const ros::TimerEvent&) {
         ROS_INFO("No messages received within the timeout period. Resetting average scan.");

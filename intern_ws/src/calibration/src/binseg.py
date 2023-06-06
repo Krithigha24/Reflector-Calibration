@@ -14,7 +14,7 @@ fall. Values outside this range are considered outliers
 
 Smaller value of k (eg. k < 1) more sensitive to outlier, less strict
 Larger value of k (e.g. k > 1) stricter
-"""
+
 # def find_binseg_thresh(data, k=2):
 #     # Calculate the lower and upper quartiles
 #     q1 = np.percentile(data, 25)
@@ -28,7 +28,7 @@ Larger value of k (e.g. k > 1) stricter
 #     outliers = [val for val in data if val > upper_bound]
 #     rospy.loginfo(min(outliers)) 
 #     return min(outliers)
-
+"""
 def scanCallback(scan_msg):
     #REFLECTIVITY_THRESHOLD = find_binseg_thresh(scan_msg.intensities)
 

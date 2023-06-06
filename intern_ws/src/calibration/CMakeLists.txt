@@ -34,7 +34,8 @@ add_executable(
 target_link_libraries(scanAvg_node ${catkin_LIBRARIES})
 
 install(PROGRAMS
-  src/cluster.py
+  src/reflector_coordinate.py
+  src/csv_data.py
   src/binseg.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
