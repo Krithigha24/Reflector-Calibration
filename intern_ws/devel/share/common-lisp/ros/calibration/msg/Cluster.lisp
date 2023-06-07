@@ -109,10 +109,10 @@
   "9b0088670d95be7298b39001111310db")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Cluster>)))
   "Returns full string definition for message of type '<Cluster>"
-  (cl:format cl:nil "#float32 angle_min~%#float32 angle_increment~%int32[] index~%int32[] label~%~%"))
+  (cl:format cl:nil "#float32 angle_min~%#float32 angle_increment~%int32[] index~%int32[] label~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Cluster)))
   "Returns full string definition for message of type 'Cluster"
-  (cl:format cl:nil "#float32 angle_min~%#float32 angle_increment~%int32[] index~%int32[] label~%~%"))
+  (cl:format cl:nil "#float32 angle_min~%#float32 angle_increment~%int32[] index~%int32[] label~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Cluster>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'index) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))

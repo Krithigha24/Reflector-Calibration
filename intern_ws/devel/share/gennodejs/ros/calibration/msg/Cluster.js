@@ -81,6 +81,7 @@ class Cluster {
     #float32 angle_increment
     int32[] index
     int32[] label
+    
     `;
   }
 
