@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 import rospy
 import math
-import os 
+import os  
 from sensor_msgs.msg import LaserScan
 import numpy as np
-import csv
+import csv             
 
 class CsvData:
-    def __init__(self):
-        self.filteredScan_subscriber = rospy.Subscriber('/filtered_scan', LaserScan, self.filterScanToCSV)
-        self.csv_file = 'scan_data.csv'
+    def __init__(self, BAG_NAME):
+        self.BAG_NAME = BAG_NAME
+        self.filteredScan_subscriber = rospy.Subscriber('/segmented_scan', LaserScan, self.segmented_scan_to_CSV)
+        self.csv_file = 'scan_data_{}.csv'.format(self.BAG_NAME)
         self.msg_no = 0
 
     # Euclidian distance from point1 to point2, or from point1 to (0,0) if point2 input is not specified
@@ -37,7 +38,7 @@ class CsvData:
             angle += scan_msg.angle_increment
         return points_info
     
-    def filterScanToCSV(self, scan_msg):
+    def segmented_scan_to_CSV(self, scan_msg):
         points_info = self.filterScan_to_cartesian_and_angle(scan_msg)
         if not os.path.isfile(self.csv_file):  # Check if the CSV file exists
             with open(self.csv_file, 'a') as file:
@@ -52,8 +53,10 @@ class CsvData:
         self.msg_no += 1
 
 if __name__ == '__main__':
+    BAG_NAME = rospy.get_param('bag_name') # Intensity threshold to idenity points belonging to cylindrical reflector
+
     rospy.init_node('csv_data')
-    CsvData()
+    CsvData(BAG_NAME)
     rospy.spin()
 
    

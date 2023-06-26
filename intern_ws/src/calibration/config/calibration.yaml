@@ -1,15 +1,19 @@
 #binseg
-reflectivity_threshold: 2000
+intensity_threshold: 2000
+
+#csv_data
+bag_name: 212
+
+#dbscan
+bag_message_no: 0
+#cluster_threshold: 10 # Minimum points for a main cluster density
+#enable_averager: true # Average /scan topic over time
+#DBSCAN_epsilon : 0.005 # Maximum distance between two points for them to be considered as part of same cluster
+#DBSCAN_minpts : 1 # Minimum number of points required to form a dense region
+#reflector_radius : 0.0845 # Fixed Radius of the cylindrical reflector
+#Reflector POSE
+#radius: 
 
 #averager
 #timeout_duration: 30.0
 #enable_binaryseg: false #binary segmentation
-
-#cluster
-cluster_threshold: 10 # Minimum points for a main cluster density
-#enable_averager: true # Average /scan topic over time
-DBSCAN_epsilon : 0.005 # Maximum distance between two points for them to be considered as part of same cluster
-DBSCAN_minpts : 1 # Minimum number of points required to form a dense region
-reflector_radius : 0.0845 # Fixed Radius of the cylindrical reflector
-#Reflector POSE
-#radius: 
