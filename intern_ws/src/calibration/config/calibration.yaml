@@ -1,11 +1,17 @@
 #binseg
-intensity_threshold: 2000
+intensity_threshold: 4000 #2700 for 129
 
 #csv_data
-bag_name: 212
+bag_name: 916
+
+
+
+
+
+
 
 #dbscan
-bag_message_no: 0
+#bag_message_no: 0
 #cluster_threshold: 10 # Minimum points for a main cluster density
 #enable_averager: true # Average /scan topic over time
 #DBSCAN_epsilon : 0.005 # Maximum distance between two points for them to be considered as part of same cluster

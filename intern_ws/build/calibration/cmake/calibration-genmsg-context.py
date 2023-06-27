@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
+messages_str = "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/PointArray.msg"
 services_str = ""
 pkg_name = "calibration"
 dependencies_str = "std_msgs"

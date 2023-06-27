@@ -1,5 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
+message(FATAL_ERROR "Could not find messages which '/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/PointArray.msg' depends on. Did you forget to specify generate_messages(DEPENDENCIES ...)?
+Cannot locate message [Point]: unknown package [geometry_msgs] on search path [{'calibration': ['/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg'], 'std_msgs': ['/opt/ros/noetic/share/std_msgs/cmake/../msg']}]")
 message(STATUS "calibration: 1 messages, 0 services")
 
 set(MSG_I_FLAGS "-Icalibration:/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
@@ -17,23 +19,12 @@ add_custom_target(calibration_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_custom_target(_calibration_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "calibration" "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" ""
-)
-
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
-_generate_msg_cpp(calibration
-  "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/calibration
-)
 
 ### Generating Services
 
@@ -49,8 +40,6 @@ add_custom_target(calibration_generate_messages_cpp
 add_dependencies(calibration_generate_messages calibration_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_dependencies(calibration_generate_messages_cpp _calibration_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(calibration_gencpp)
@@ -61,12 +50,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS calibration_generate_messages_cpp)
 
 ### Section generating for lang: geneus
 ### Generating Messages
-_generate_msg_eus(calibration
-  "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/calibration
-)
 
 ### Generating Services
 
@@ -82,8 +65,6 @@ add_custom_target(calibration_generate_messages_eus
 add_dependencies(calibration_generate_messages calibration_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_dependencies(calibration_generate_messages_eus _calibration_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(calibration_geneus)
@@ -94,12 +75,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS calibration_generate_messages_eus)
 
 ### Section generating for lang: genlisp
 ### Generating Messages
-_generate_msg_lisp(calibration
-  "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/calibration
-)
 
 ### Generating Services
 
@@ -115,8 +90,6 @@ add_custom_target(calibration_generate_messages_lisp
 add_dependencies(calibration_generate_messages calibration_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_dependencies(calibration_generate_messages_lisp _calibration_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(calibration_genlisp)
@@ -127,12 +100,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS calibration_generate_messages_lisp)
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
-_generate_msg_nodejs(calibration
-  "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/calibration
-)
 
 ### Generating Services
 
@@ -148,8 +115,6 @@ add_custom_target(calibration_generate_messages_nodejs
 add_dependencies(calibration_generate_messages calibration_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_dependencies(calibration_generate_messages_nodejs _calibration_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(calibration_gennodejs)
@@ -160,12 +125,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS calibration_generate_messages_nodej
 
 ### Section generating for lang: genpy
 ### Generating Messages
-_generate_msg_py(calibration
-  "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/calibration
-)
 
 ### Generating Services
 
@@ -181,8 +140,6 @@ add_custom_target(calibration_generate_messages_py
 add_dependencies(calibration_generate_messages calibration_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/msg/Cluster.msg" NAME_WE)
-add_dependencies(calibration_generate_messages_py _calibration_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(calibration_genpy)
