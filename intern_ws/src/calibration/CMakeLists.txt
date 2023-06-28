@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
+  dynamic_reconfigure
 )
 
 catkin_package(
@@ -22,8 +23,7 @@ add_executable(
 target_link_libraries(scanAvg_node ${catkin_LIBRARIES})
 
 install(PROGRAMS
-  src/reflector_coordinate.py
-  src/csv_data.py
-  src/binseg.py
+  scripts/csv_data.py
+  scripts/binseg.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

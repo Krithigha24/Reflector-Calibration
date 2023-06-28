@@ -2,13 +2,7 @@
 intensity_threshold: 4000 #2700 for 129
 
 #csv_data
-bag_name: 916
-
-
-
-
-
-
+bag_name: 1231
 
 #dbscan
 #bag_message_no: 0
