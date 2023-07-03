@@ -1,11 +1,12 @@
 <!-- This launch file sets up the hokuyo ust-30lx lidar and displays lidar /scan data on rviz
      1. Connect data cable of lidar to laptop, 
-     2. roslaunch collectData.launch
+     2. In a terminal roslaunch calibration collectData.launch
      3. In another terminal navigate to bags folder by typing "bags"
         I added this line alias bags='cd ~/Reflector-Calibration/intern_ws/src/calibration/bags' in bashrc file
         for easier directory path navigation
-     4. rosbag record -O exp_"()".bag /scan 
-     5. ctrl-c after collecting enough data -->
+     4. rosbag record -O exp_"()".bag /scan [CHECK HOW LONG TO RECORD EACH ROSBAG FOR]
+     5. ctrl-c after collecting enough data 
+     6. switch off lidar-->
 
 <launch>
     <!-- Nodes -->
