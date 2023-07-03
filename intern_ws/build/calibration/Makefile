@@ -90,17 +90,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -123,6 +112,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -198,36 +198,6 @@ roscpp_generate_messages_lisp/fast:
 .PHONY : roscpp_generate_messages_lisp/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/scanAvg_node.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/scanAvg_node.dir/rule
-.PHONY : calibration/CMakeFiles/scanAvg_node.dir/rule
-
-# Convenience name for target.
-scanAvg_node: calibration/CMakeFiles/scanAvg_node.dir/rule
-
-.PHONY : scanAvg_node
-
-# fast build rule for target.
-scanAvg_node/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/build
-.PHONY : scanAvg_node/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
 calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 .PHONY : calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
@@ -241,21 +211,6 @@ geometry_msgs_generate_messages_nodejs: calibration/CMakeFiles/geometry_msgs_gen
 geometry_msgs_generate_messages_nodejs/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_cpp: calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_cpp
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_cpp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_cpp/fast
 
 # Convenience name for target.
 calibration/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
@@ -301,21 +256,6 @@ std_msgs_generate_messages_cpp: calibration/CMakeFiles/std_msgs_generate_message
 std_msgs_generate_messages_cpp/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 calibration/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
@@ -378,21 +318,6 @@ roscpp_generate_messages_py/fast:
 .PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_py: calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_py
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_py/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_py/fast
-
-# Convenience name for target.
 calibration/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 .PHONY : calibration/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
@@ -421,21 +346,6 @@ rosgraph_msgs_generate_messages_nodejs: calibration/CMakeFiles/rosgraph_msgs_gen
 rosgraph_msgs_generate_messages_nodejs/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make calibration/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build.make calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
 calibration/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
@@ -528,36 +438,6 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_gencfg: calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-
-.PHONY : dynamic_reconfigure_gencfg
-
-# fast build rule for target.
-dynamic_reconfigure_gencfg/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
-.PHONY : dynamic_reconfigure_gencfg/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_eus: calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_eus
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_eus/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_eus/fast
-
-# Convenience name for target.
 calibration/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 .PHONY : calibration/CMakeFiles/std_msgs_generate_messages_py.dir/rule
@@ -571,6 +451,21 @@ std_msgs_generate_messages_py: calibration/CMakeFiles/std_msgs_generate_messages
 std_msgs_generate_messages_py/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/std_msgs_generate_messages_py.dir/build.make calibration/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 calibration/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
@@ -603,49 +498,64 @@ geometry_msgs_generate_messages_eus/fast:
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-dynamic_reconfigure_generate_messages_lisp: calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+geometry_msgs_generate_messages_cpp: calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : dynamic_reconfigure_generate_messages_lisp
+.PHONY : geometry_msgs_generate_messages_cpp
 
 # fast build rule for target.
-dynamic_reconfigure_generate_messages_lisp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+calibration/CMakeFiles/scanAvg_node.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/scanAvg_node.dir/rule
+.PHONY : calibration/CMakeFiles/scanAvg_node.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_cpp: calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+scanAvg_node: calibration/CMakeFiles/scanAvg_node.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_cpp
+.PHONY : scanAvg_node
 
 # fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
+scanAvg_node/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/build
+.PHONY : scanAvg_node/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
-.PHONY : calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-dynamic_reconfigure_generate_messages_nodejs: calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+rosgraph_msgs_generate_messages_cpp: calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : dynamic_reconfigure_generate_messages_nodejs
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-dynamic_reconfigure_generate_messages_nodejs/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make calibration/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_nodejs/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_eus: calibration/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build.make calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
 
 src/averager.o: src/averager.cpp.o
 
@@ -685,40 +595,34 @@ help:
 	@echo "... list_install_components"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
-	@echo "... scanAvg_node"
-	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... edit_cache"
-	@echo "... dynamic_reconfigure_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... install/local"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... test"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
-	@echo "... dynamic_reconfigure_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... rebuild_cache"
-	@echo "... roscpp_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... dynamic_reconfigure_gencfg"
-	@echo "... dynamic_reconfigure_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... dynamic_reconfigure_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... dynamic_reconfigure_generate_messages_nodejs"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... scanAvg_node"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... test"
+	@echo "... edit_cache"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... rebuild_cache"
 	@echo "... src/averager.o"
 	@echo "... src/averager.i"
 	@echo "... src/averager.s"

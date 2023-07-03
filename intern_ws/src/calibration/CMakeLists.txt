@@ -6,7 +6,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
-  dynamic_reconfigure
 )
 
 catkin_package(
