@@ -23,6 +23,6 @@ target_link_libraries(scanAvg_node ${catkin_LIBRARIES})
 
 install(PROGRAMS
   scripts/csv_data.py
-  scripts/binseg.py
+  scripts/binsegNode.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

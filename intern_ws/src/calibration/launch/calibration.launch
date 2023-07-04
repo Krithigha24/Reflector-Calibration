@@ -3,7 +3,7 @@
     <rosparam file="$(find calibration)/config/calibration.yaml" command="load" />
 
     <!-- Nodes -->
-    <node pkg="calibration" type="binseg.py" name="binseg" output="screen"/>
+    <node pkg="calibration" type="binsegNode.py" name="binsegNode" output="screen"/>
     <!--node pkg="calibration" type="scanAvg_node" name="averager" output="screen"/-->
     <!--node pkg="calibration" type="reflector_coordinate.py" name="reflector_coordinate" output="screen"/-->
 

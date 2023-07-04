@@ -1,5 +1,5 @@
 #binseg
-intensity_threshold: 4000 #2700 for 129
+intensity_threshold: 5748 #2700 for 129
 
 #csv_data
 bag_name: 1231
