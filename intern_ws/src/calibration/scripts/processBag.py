@@ -17,7 +17,6 @@ class RosbagProcessor:
         self.folder_path = folder_path
         self.num_normal_pts = 2 # number of closest points to lidar to average
         self.radius = 0.045 # fixed radius(m) of cylindrical marker ±0.0005 m 
-        self.num_scans = 80
         
     # Euclidian distance from point1 to point2, or from point1 to (0,0) if point2 input is not specified
     def dist_point2point(self, point1, point2=(0, 0)):    
@@ -88,10 +87,7 @@ class RosbagProcessor:
                     center_coordinates = self.calculate_coordinates_on_line(self.radius, (average_x,average_y))
                     computed_dist_to_lidar = self.dist_point2point(center_coordinates)
                     computed_dist_array.append(computed_dist_to_lidar)
-                    
-                    if len(computed_dist_array) == self.num_scans:
-                        break
-                
+                                    
                 #Compute mean
                 mean_computed_dist = np.mean(computed_dist_array)
                 print(mean_computed_dist)
