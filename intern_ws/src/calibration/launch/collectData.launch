@@ -4,7 +4,7 @@
      3. In another terminal navigate to bags folder by typing "bags"
         I added this line alias bags='cd ~/Reflector-Calibration/intern_ws/src/calibration/bags' in bashrc file
         for easier directory path navigation
-     4. rosbag record -O exp_"()".bag /scan [CHECK HOW LONG TO RECORD EACH ROSBAG FOR]
+     4. timeout "duration" rosbag record -O exp_162.bag /scan [CHECK HOW LONG TO RECORD EACH ROSBAG FOR]
      5. ctrl-c after collecting enough data 
      6. switch off lidar-->
 

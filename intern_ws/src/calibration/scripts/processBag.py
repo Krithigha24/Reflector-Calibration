@@ -94,7 +94,7 @@ class RosbagProcessor:
                 
                 #Compute mean
                 mean_computed_dist = np.mean(computed_dist_array)
-                
+                print(mean_computed_dist)
                 # Add the point to the plot
                 ax.plot(measured_dist_to_lidar / 1000.0, mean_computed_dist, 'ro')
                         

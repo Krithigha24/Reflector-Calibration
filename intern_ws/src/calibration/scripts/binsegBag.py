@@ -28,7 +28,7 @@ class IntensityBinarySegmentation:
         scan_msg.intensities = filtered_intensities.tolist()
         return scan_msg
     
-    def find_binseg_thresh(self,data, k=1.5):
+    def find_binseg_thresh(self,data, k=0.5):
         #Determine the reflectivity threshold using the IQR method
 
         #The IQR method calculates interqurtile range within which most values 
