@@ -9,14 +9,27 @@
 import os
 import rosbag
 import numpy as np
+import re
 
 class IntensityBinarySegmentation:
     def __init__(self, folder_path):
         self.folder_path = folder_path
         self.reflectivity_threshold = None
-        self.num_scans = 30
+        self.num_scans = 200
         
-    def find_binseg_thresh(self,data, k=0.5):
+    def extract_dist_from_filename(self,string):
+        # Define the regular expression pattern to match a number
+        pattern = r'\d+'
+        # Find all matches of the pattern in the string
+        matches = re.findall(pattern, string)
+        # Extract the first matched number (if any)
+        if matches:
+            number = int(matches[0])
+            return number
+        else:
+            return None
+         
+    def find_binseg_thresh(self,data, k=1):
         #Determine the reflectivity threshold using the IQR method
 
         #The IQR method calculates interqurtile range within which most values 
@@ -50,6 +63,9 @@ class IntensityBinarySegmentation:
         for filename in os.listdir(self.folder_path):
             
             if filename.endswith('.bag'):  # Check if it's a ROS bag file                
+                # Extract the measured distance to lidar from the filename
+                measured_dist_to_lidar = int(self.extract_dist_from_filename(filename))
+                
                 input_bag_path = os.path.join(self.folder_path, filename)
                 output_bag_path = os.path.join(self.folder_path, "bs_" + filename)
                 input_bag = rosbag.Bag(input_bag_path)
@@ -62,8 +78,11 @@ class IntensityBinarySegmentation:
                     scan_count += 1
                     
                     if self.reflectivity_threshold is None:
-                        self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities))
-
+                        if measured_dist_to_lidar < 608:
+                            self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities))
+                        else:
+                            self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities, 2))
+                        
                     segmented_scan_msg = self.segment(msg)
                     output_bag.write('/segmented_scan', segmented_scan_msg, t)
                     

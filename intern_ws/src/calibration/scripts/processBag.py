@@ -22,7 +22,7 @@ class RosbagProcessor:
     def dist_point2point(self, point1, point2=(0, 0)):    
         return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
         
-    def filterScan_to_cartesian_and_angle(self, scan_msg):
+    def filterScan_to_cartesian(self, scan_msg):
         points_info = []
         angle = scan_msg.angle_min
         for r in scan_msg.ranges:
@@ -30,7 +30,7 @@ class RosbagProcessor:
                 x = r * np.cos(angle)
                 y = r * np.sin(angle)
                 dist_to_lidar = self.dist_point2point((x,y))
-                points_info.append([x, y, angle, dist_to_lidar])
+                points_info.append([x, y, dist_to_lidar])
             angle += scan_msg.angle_increment
         return points_info
     
@@ -73,10 +73,10 @@ class RosbagProcessor:
                 # Process the messages in the bag
                 for topic, msg, t in bag.read_messages(topics=['/segmented_scan']):
                     # Perform computations with the messages
-                    points_info = self.filterScan_to_cartesian_and_angle(msg)
+                    points_info = self.filterScan_to_cartesian(msg)
                     
                     # Sort smallest to largest value of dist to lidar 
-                    points_info.sort(key=lambda point: point[3])
+                    points_info.sort(key=lambda point: point[2])
                     
                     # Extract the first num_points (x, y) coordinates
                     coordinates = [(point[0], point[1]) for point in points_info[:self.num_normal_pts]]
@@ -90,9 +90,9 @@ class RosbagProcessor:
                                     
                 #Compute mean
                 mean_computed_dist = np.mean(computed_dist_array)
-                print(mean_computed_dist)
+                #print(mean_computed_dist)
                 # Add the point to the plot
-                ax.plot(measured_dist_to_lidar / 1000.0, mean_computed_dist, 'ro')
+                ax.plot(measured_dist_to_lidar / 1000.0, mean_computed_dist-measured_dist_to_lidar/ 1000.0, 'ro')
                         
                 # Close the bag after processing
                 bag.close()

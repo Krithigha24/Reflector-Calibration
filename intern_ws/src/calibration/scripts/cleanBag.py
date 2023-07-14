@@ -60,27 +60,30 @@ class RosbagCleaner:
                     #print(len(points_info))
                     cluster, cluster_points = self.perform_dbscan(points_info)
                     # Print the cluster points
-                    diff = 1e99
+                    # diff = 1e99
                     main_cluster = 0
                     for i,(label, points) in enumerate(cluster_points):
-                        #print(f"Cluster {label}:")
-                        #print(points)
-                        #print("--------------------")
-                        xc, yc, r, sigma = hyperLSQ(points)
-                        if abs(self.radius - r) < diff:
-                            main_cluster = label
+                        print(f"Cluster {label}:")
+                        print(points)
+                        print("--------------------")
+                        # xc, yc, r, sigma = kmh(points)
+                        # print("radius is", r)
+                        # if abs(self.radius - r) < diff:
+                        #     main_cluster = label
+                        #     diff = abs(self.radius - r)
+                        #     print("diff is", diff)
                         # print(r)
                         # print("--------------------")
                     # print(main_cluster)
 
                     # Retrieve the corresponding values from array1
-                    #print(main_cluster)
-                    #print(cluster)
-                    # print(list((np.array(msg.ranges))))
-                    msg.ranges = (np.array(msg.ranges)[np.where(cluster == main_cluster)]).tolist()
-                    msg.intensities = (np.array(msg.intensities)[np.where(cluster == main_cluster)]).tolist()
-                    # print(msg.intensities)
-                    output_bag.write('/cleaned_scan', msg, t)
+                    # print(main_cluster)
+                    # #print(cluster)
+                    # # print(list((np.array(msg.ranges))))
+                    # msg.ranges = (np.array(msg.ranges)[np.where(cluster == main_cluster)]).tolist()
+                    # msg.intensities = (np.array(msg.intensities)[np.where(cluster == main_cluster)]).tolist()
+                    # # print(msg.intensities)
+                    # output_bag.write('/cleaned_scan', msg, t)
                     # print(msg.ranges)
                 # Close the bag after processing
                 bag.close()
