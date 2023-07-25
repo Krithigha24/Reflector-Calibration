@@ -81,7 +81,7 @@ class IntensityBinarySegmentation:
                         if measured_dist_to_lidar < 608:
                             self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities))
                         else:
-                            self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities, 2))
+                            self.reflectivity_threshold = int(self.find_binseg_thresh(msg.intensities, 4.8))
                         
                     segmented_scan_msg = self.segment(msg)
                     output_bag.write('/segmented_scan', segmented_scan_msg, t)

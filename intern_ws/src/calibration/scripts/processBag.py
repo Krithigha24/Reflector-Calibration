@@ -55,8 +55,8 @@ class RosbagProcessor:
     def process_rosbags(self):
          # Initialize the plot
         fig, ax = plt.subplots()
-        ax.set_xlabel('Measured Distance to lidar(m)')
-        ax.set_ylabel('Mean Computed Distance to lidar(m)')
+        ax.set_xlabel('Measured Distance to lidar (m)')
+        ax.set_ylabel('Error (m)')
         
         # Iterate over each file in the folder
         for filename in os.listdir(self.folder_path):
