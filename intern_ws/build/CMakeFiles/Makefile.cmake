@@ -201,6 +201,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "gtest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "calibration/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake"
   "calibration/CMakeFiles/roscpp_generate_messages_lisp.dir/DependInfo.cmake"
+  "calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "calibration/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "calibration/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/DependInfo.cmake"
@@ -221,8 +222,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "calibration/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "calibration/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "calibration/CMakeFiles/geometry_msgs_generate_messages_eus.dir/DependInfo.cmake"
-  "calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/DependInfo.cmake"
-  "calibration/CMakeFiles/scanAvg_node.dir/DependInfo.cmake"
   "calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "calibration/CMakeFiles/roscpp_generate_messages_eus.dir/DependInfo.cmake"
   )

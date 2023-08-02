@@ -80,16 +80,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -101,6 +91,16 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target test
 test:
@@ -196,6 +196,21 @@ roscpp_generate_messages_lisp: calibration/CMakeFiles/roscpp_generate_messages_l
 roscpp_generate_messages_lisp/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make calibration/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 calibration/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
@@ -498,36 +513,6 @@ geometry_msgs_generate_messages_eus/fast:
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make calibration/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-calibration/CMakeFiles/scanAvg_node.dir/rule:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/scanAvg_node.dir/rule
-.PHONY : calibration/CMakeFiles/scanAvg_node.dir/rule
-
-# Convenience name for target.
-scanAvg_node: calibration/CMakeFiles/scanAvg_node.dir/rule
-
-.PHONY : scanAvg_node
-
-# fast build rule for target.
-scanAvg_node/fast:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/build
-.PHONY : scanAvg_node/fast
-
-# Convenience name for target.
 calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f CMakeFiles/Makefile2 calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 .PHONY : calibration/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
@@ -557,33 +542,6 @@ roscpp_generate_messages_eus/fast:
 	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build.make calibration/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
 
-src/averager.o: src/averager.cpp.o
-
-.PHONY : src/averager.o
-
-# target to build an object file
-src/averager.cpp.o:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/src/averager.cpp.o
-.PHONY : src/averager.cpp.o
-
-src/averager.i: src/averager.cpp.i
-
-.PHONY : src/averager.i
-
-# target to preprocess a source file
-src/averager.cpp.i:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/src/averager.cpp.i
-.PHONY : src/averager.cpp.i
-
-src/averager.s: src/averager.cpp.s
-
-.PHONY : src/averager.s
-
-# target to generate assembly for a file
-src/averager.cpp.s:
-	cd /home/krithigha/Reflector-Calibration/intern_ws/build && $(MAKE) -f calibration/CMakeFiles/scanAvg_node.dir/build.make calibration/CMakeFiles/scanAvg_node.dir/src/averager.cpp.s
-.PHONY : src/averager.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -592,9 +550,9 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... install/local"
@@ -605,6 +563,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... list_install_components"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
@@ -616,16 +575,11 @@ help:
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... scanAvg_node"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... test"
 	@echo "... edit_cache"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... rebuild_cache"
-	@echo "... src/averager.o"
-	@echo "... src/averager.i"
-	@echo "... src/averager.s"
 .PHONY : help
 
 

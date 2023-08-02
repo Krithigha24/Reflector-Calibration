@@ -52,10 +52,3 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/calibration" TYPE FILE FILES "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/calibration" TYPE PROGRAM FILES
-    "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/scripts/csv_data.py"
-    "/home/krithigha/Reflector-Calibration/intern_ws/src/calibration/scripts/binsegNode.py"
-    )
-endif()
-

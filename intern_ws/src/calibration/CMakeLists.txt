@@ -16,13 +16,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(
-  scanAvg_node
-    src/averager.cpp)
-target_link_libraries(scanAvg_node ${catkin_LIBRARIES})
-
 install(PROGRAMS
-  scripts/csv_data.py
-  scripts/binsegNode.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
