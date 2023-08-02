@@ -1,3 +1,5 @@
 # Ignore ROS-specific build folders
-/devel/
-/build/
+build/
+devel/
+src/CMakeLists.txt
+.vscode/
