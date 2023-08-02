@@ -1,2 +1,0 @@
-calibration
--DCATKIN_DEVEL_PREFIX=/home/krithigha/Reflector-Calibration/intern_ws/devel -DCMAKE_INSTALL_PREFIX=/home/krithigha/Reflector-Calibration/intern_ws/install -G Unix Makefiles
