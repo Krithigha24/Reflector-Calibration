@@ -6,7 +6,7 @@ The main objective of the project is to accurately estimate the distance of cyli
 2. Select the two (or more) closest data points to the Lidar.
 3. Take the average of the two selected data points' coordinates to approximate the position where the laser beam is normal to the cylindrical reflector's surface.
 4. Extend the line of sight from the incident normal beam by the known radius amount to locate the center coordinates of the reflector and thereby determine the distance from the Lidar.
-This logic is coded in processBag.py under scripts folder 
+**This logic is coded in processBag.py under scripts folder** 
 ### Collecting Data
 The cylindrical reflector is positioned at intervals of 0.05m, ranging from 0.129m to 3m away from the Lidar. At each distance experiment, a Laser Scan message is recorded.
 To collect the data, follow these steps:
